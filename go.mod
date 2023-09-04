@@ -1,4 +1,4 @@
-module github.com/mmalessa/go-http-mock
+module github.com/mmalessa/go-dumy-http
 
 go 1.21.0
 

@@ -5,8 +5,8 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_app
     user: ${DEVELOPER_UID}
     build:
-      context: ./
-      dockerfile: ./Dockerfile
+      context: ../
+      dockerfile: ./.docker/Dockerfile
       target: ${BUILD_TARGET}
       args:
         - DEVELOPER_UID
