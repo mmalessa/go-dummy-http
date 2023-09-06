@@ -46,5 +46,7 @@ make build
 ```
 
 ## DockerHub notes
+```sh
 docker tag local-image:tagname username/new-repo:tagname
 docker push username/new-repo:tagname
+```
