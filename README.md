@@ -1,10 +1,7 @@
-# Go dummy HTTP server
-
-
-## Docker
 # A dummy HTTP server to test various things
 https://github.com/mmalessa/go-dummy-http
 
+## Docker
 `docker-compose.yaml`
 ```yaml
 version: "3.8"
