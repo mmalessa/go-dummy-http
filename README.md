@@ -9,14 +9,14 @@ version: "3.8"
 services:
   http_1:
     container_name: go_dummy_http1
-    image: mmalessa/go-dummy-http:1.0.0
+    image: mmalessa/go-dummy-http:1.0.1
     environment:
       - APP_INSTANCE=http1
     ports:
       - "801:80"
   http_2:
     container_name: go_dummy_http2
-    image: mmalessa/go-dummy-http:1.0.0
+    image: mmalessa/go-dummy-http:1.0.1
     environment:
       - APP_INSTANCE=http2
     ports:
@@ -33,20 +33,24 @@ GO DUMMY HTTP
 http://github.com/mmalessa/go-http-mock
 
 Server instance: http1
-Server time: 2023-09-04 16:43:10+00:00
-Host: localhost
-Method: GET
-Path: /asdfasdf/
+    Server time: 2023-09-04 16:43:10+00:00
+           Host: localhost
+        Method: GET
+          Path: /asdfasdf/
+       Headers:
+          [...]
 ```
+
 
 ## Development kickstart
 ```sh
-make build
-
+make developer
 ```
 
 ## DockerHub notes
 ```sh
-docker tag local-image:tagname username/new-repo:tagname
-docker push username/new-repo:tagname
+make build
+docker image ls | grep go_dummy_http
+docker tag go_dummy_http-app:latest mmalessa/go-dummy-http:1.0.1
+docker push mmalessa/go-dummy-http:1.0.1
 ```
