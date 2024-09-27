@@ -1,8 +1,5 @@
-# include .env
-
+DC = docker compose
 DEVELOPER_UID = $(shell id -u)
-DOCKER_COMPOSE		= $(if $(shell which docker-compose),docker-compose,docker compose)
-DC					= $(DOCKER_COMPOSE) --project-directory=".docker" --file=".docker/docker-compose.yaml"
 
 .DEFAULT_GOAL = help
 
@@ -13,15 +10,15 @@ help: ## Outputs this help screen
 
 .PHONY: build
 build:
-	DEVELOPER_UID=${DEVELOPER_UID} \
-	BUILD_TARGET="prod"
-		$(DC) build
+	BUILD_TARGET="prod" $(DC) build
 
 .PHONY: developer
 developer:
-	DEVELOPER_UID=${DEVELOPER_UID} \
-	BUILD_TARGET="dev" \
-		$(DC) build
+	DEVELOPER_UID=${DEVELOPER_UID} BUILD_TARGET="dev" $(DC) build
+
+.PHONY: binary
+binary:
+	$(DC) exec app sh -c "go build -o bin/"
 
 .PHONY: up
 up:
@@ -31,8 +28,8 @@ up:
 down:
 	$(DC) down
 
-.PHONY: console
-console:
+.PHONY: shell
+shell:
 	$(DC) exec -it app bash
 
 up-prod:
