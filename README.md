@@ -1,6 +1,9 @@
 # A dummy HTTP server to test various things
 https://github.com/mmalessa/go-dummy-http
 
+## Kickstart
+`make binary`
+
 ## Docker
 `docker-compose.yaml`
 ```yaml

@@ -6,12 +6,13 @@ services:
       target: ${BUILD_TARGET:-dev}
       args:
         DEVELOPER_UID: ${DEVELOPER_UID:-1000}
+    image: go-dummy-http-${BUILD_TARGET:-dev}:latest
     restart: on-failure
     working_dir: /go/src/app
     ports:
       - "80:80"
     volumes:
-      - ../:/go/src/app
+      - ./:/go/src/app
       - gopkg:/go/pkg/
       - gobin:/go/bin/
     networks:
